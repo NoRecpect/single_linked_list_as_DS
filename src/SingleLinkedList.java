@@ -5,8 +5,12 @@ public class SingleLinkedList {
 
     // used to add item at the first index of list
     public void insertFirst(int item) {
-
-
+        // make an object from node
+        Node newNode = new Node(item);
+        // make a new node point to the first node in list before making it a first node
+        newNode.next = head;
+        // making a new node first node in the list
+        head = newNode;
     }
 
     // ,and it's a traditional type of inserting
@@ -37,6 +41,39 @@ public class SingleLinkedList {
     }
 
     public void insertAtPosition(int item, int position) {
+        // make the node want to add to the list
+        Node newNode = new Node(item);
+        // check if the position is equal to zero insert the node to the first place in list
+        if (position == 0) {
+            // call the insertFirst function
+            insertFirst(item);
+            return;
+        }
+        // make a pointer to traverse on the list  starts from zero position(head)
+        Node currentPointer = head;
+        // make an index to know where Am I in the list ?
+        int index = 0;
+        // looping on the list to go the position I want
+        // if I don't exit the list and the index <position -1
+        while (currentPointer != null && index < position - 1) {
+            // move to the next node and increment index by 1
+            currentPointer = currentPointer.next;
+            index++;
+
+        }
+        // precaution اجراء احترازي
+        // if current is null position is beyond the end of the list
+        if (currentPointer == null) {
+            System.out.println("position is out of bounds");
+            return;
+        }
+        // join the nodes
+        // make the new node points to the next node
+        newNode.next = currentPointer.next;
+        // make the current node points to the new node
+        currentPointer.next = newNode;
+
+
     }
 
     // traverse used to looping on the list and display all items in it

@@ -8,9 +8,15 @@ public class Main {
         sList.append(20);
         sList.append(30);
         sList.traverse();
-
-        // display list items
-//        sList.traverse();
+//        sList.insertFirst(5);
+        sList.insertAtPosition(5, 0);
+        sList.traverse();
+//        sList.insertFirst(1);
+        sList.insertAtPosition(25, 3);
+        sList.traverse();
+        // insert at position that not  exist
+        sList.insertAtPosition(100, 8);
+        sList.traverse();
 
 
     }
