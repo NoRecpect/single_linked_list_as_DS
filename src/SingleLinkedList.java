@@ -92,6 +92,60 @@ public class SingleLinkedList {
 
     }
 
-    public void delete(int item) {
+    public void deleteItem(int item) {
+
+        if (head == null) {
+            System.out.println("The list is empty");
+            return;
+        }
+        // if the item is the first item in the list
+        if (head.data == item) {
+            head = head.next;
+            return;
+        }
+// if the item is inside the list
+        // make a pointer to traverse on the list starts from the first element in the list
+        Node currentPointer = head;
+        // to loop to the ending of the list
+        while (currentPointer.next != null) {
+            // move until the pre node of the deleted item
+            if (currentPointer.next.data == item) {
+                // make a current pointer of pre node points to the next node of deleted item
+                // currentPointer.next on the lift side of assign operator is the pre node
+                // current pointer.next on the right side of assign operator is the deleted node
+                // current pointer.next.next on the right side of assign operator is the next node
+                currentPointer.next = currentPointer.next.next;
+                return;
+            }
+            // if  if-condition is false move to the next node
+            currentPointer = currentPointer.next;
+        }
+
+    }
+
+    public void merge(SingleLinkedList list2) {
+        // if first list (current) is empty
+        if (this.head == null) {
+            // merge process result is list 2
+            this.head = list2.head;
+            return;
+
+        }
+        // if first list is not empty
+        // make a pointer to hold the current node
+        Node currentPointer = this.head;
+        // traverse on the current list
+        while (currentPointer.next != null) {// move until last element in the list
+            currentPointer = currentPointer.next;
+//            if (currentPointer.next == null) {
+//                currentPointer.next = list2.head;
+//                return;
+//            }
+
+        }
+        // merge to lists by making last element points to the first element in the second list
+        currentPointer.next = list2.head;
+
+
     }
 }
